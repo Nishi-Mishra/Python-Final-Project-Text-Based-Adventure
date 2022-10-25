@@ -1,0 +1,85 @@
+# By submitting this assignment, I agree to the following:
+#      "Aggies do not lie, cheat, or steal, or tolerate those who do."
+#      "I have not given or received any unauthorized aid on this assignment."
+# Names: Lindsey Wilkin, Nishi Mishra, Charlie Simpson, and Kai Brown
+# Section: 543
+# Assignment: Final Project - Game: UwU KnightsQuest 
+# Date: November 22, 2020
+
+
+**DO NOT MOVE VALUES AROUND! If you need a new variable to store a value, add it to the END OF THE ARRAY! This should avoid messing up functions written by other people calling the placement of the old values and causing bugs.**
+
+As of Novemeber 27th 2020:
+
+--------------------------------------------------------------
+The “data” array stores values related to the player.
+Data[0] -> Player’s inventory
+  Data[0][0] -> Name of equipped weapon
+	Data[0][1] -> Name of equipped armor
+	Data[0][n] -> Name of item in inventory
+(to obtain item specific values, see items dictionary below.)
+
+Data[1] -> Player’s current gold amount
+
+Data[2] -> Player’s current level
+
+Data[3] -> Player's current XP amount
+
+Data[4] -> Player’s current health
+
+Data[5] -> Player’s baseline health (aka maximum health they can currently obtain)
+
+Data[6] -> Completion status. (Array of 20 zeros, each index represents that game level number. 0 == not completed, 1 == completed.)
+--------------------------------------------------------------
+--------------------------------------------------------------
+The “items” dictionary:
+To obtain item specific values of items in the inventory, run items[Data[0][n]][x] where n is the index of the item in the player’s inventory, and x is the index of the attribute in the items dictionary. (See item syntax below for specific values.)
+
+items[Data[0][n]][0] -> item type ("weapon", "armor", or "healing") 
+(more items types may be added later on)
+
+items[Data[o][n]][1] -> unlock level (the player level at which this item appears in the shop / in random loot drops.)
+
+items[Data[o][n]][2] -> Rarity tier (Used in loot spawn chances. May be adjusted to ensure game balance.)
+  Mathmatical formula needed to derive this how this should work.
+  Save this for last. Might not include at all. 
+
+If weapon:
+	items[Data[0][n]][3] -> Attack value
+
+If armor:
+	items[Data[0][n]][3] -> Protection value
+
+If healing:
+  items[Data[0][n]][3] -> How much health it replenishes
+
+items[Data[0][n]][4] -> Cost
+default: (items[Data[o][n]][1]^2.5)//1
+--------------------------------------------------------------
+--------------------------------------------------------------
+the "monsters" matrix:
+This matrix contains all of the values related to the monster.
+
+monsters[n] -> Array containing all the monster data.
+monsters[n][0] -> Monster's Name
+monsters[n][1] -> Monster's health
+monsters[n][2] -> Monster's defense (how much damage to subtract from the player's attack)
+monsters[n][3] -> XP gained for player upon defeat
+default: randint(0.8-1.5)*(level#^(2.5))//7
+monsters[n][4] -> Gold gained for player upon defeat
+default: randint(0.8-1.5)*(level#^(2.5))//7
+--------------------------------------------------------------
+--------------------------------------------------------------
+the "levels" matrix: There will be 20 levels in the game
+this matrix contains all the values related to the levels.
+
+levels[n] -> Array containing all the specific level data.
+levels[n][0] -> Level Name
+levels[n][1] -> level length (how many events happen in this level)
+levels[n][2] -> Array of numbers that represent all possible monsters to spawn in this level
+levels[n][3] -> recomended player level
+--------------------------------------------------------------
+--------------------------------------------------------------
+the "sayings" array
+Just a big list of sayings to be randomly picked from during exploration.
+sayings[n]-> An inspirational sentence / description of local area.
